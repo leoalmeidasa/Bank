@@ -1,24 +1,30 @@
-# README
+# Banco
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Projeto para empresa Nobe 
 
-Things you may want to cover:
+## Vaga de desenvolvedor Rails
 
-* Ruby version
+## Requisitos
 
-* System dependencies
+● Disponivel no Link: `https://github.com/leoalmeidasa/Bank/projects/1`
 
-* Configuration
+## Dependências
 
-* Database creation
+- Ruby 3.0.2
+- Rails 6.1.4.4
+- Sqlite3
 
-* Database initialization
+## API no Heroku
+● link: 
 
-* How to run the test suite
+## Documentação da API
 
-* Services (job queues, cache servers, search engines, etc.)
+● link: 
 
-* Deployment instructions
+## Setup
 
-* ...
+1. `git clone https://github.com/leoalmeidasa/Bank`
+2. `cd Bank`
+3. `rails db:create db:migrate`
+5. `rails s`
+6. Abrir o link localhost:3000
