@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  resources :accounts
   devise_for :users
-  root to: "home#index"
+  root to: 'accounts#index'
 end
