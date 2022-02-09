@@ -1,0 +1,28 @@
+<h1>Conta</h1>
+
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Número da Conta</th>
+    <th>Balanço</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @accounts.each do |account| %>
+    <tr>
+      <td><%= account.account_number %></td>
+      <td><%= account.balance %></td>
+      <td>
+        <div class="row">
+          <%= link_to 'Saque ou Déposito', new_transaction_path(account) , class:'btn btn-info' %>
+          <%= link_to 'Editar', edit_account_path(account), class:'btn btn-warning' %>
+          <%= link_to 'Encerrar', account, method: :delete, data: { confirm: 'Deseja encerrar sua conta?' }, class:'btn btn-danger' %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
