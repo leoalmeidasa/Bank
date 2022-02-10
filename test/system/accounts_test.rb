@@ -5,7 +5,7 @@ class AccountsTest < ApplicationSystemTestCase
     @account = accounts(:one)
   end
 
-  test "visiting the index" do
+  test "visiting the new" do
     visit accounts_url
     assert_selector "h1", text: "Accounts"
   end

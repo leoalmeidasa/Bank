@@ -1,7 +1,11 @@
-<h1>Conta</h1>
+<div class="container-fluid">
+  <div class="card-body">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold ">Conta</h3>
+      </div>
 
-
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
   <tr>
     <th>Número da Conta</th>
@@ -17,8 +21,8 @@
       <td><%= account.balance %></td>
       <td>
         <div class="row">
-          <%= link_to 'Saque ou Déposito', new_transaction_path(account) , class:'btn btn-info' %>
-          <%= link_to 'Editar', edit_account_path(account), class:'btn btn-warning' %>
+          <%= link_to 'Saque ou Déposito', new_transaction_path(:id => account.id), class:'btn btn-info' %>
+          <%= link_to 'Transferência', transference_new_path(:id => account.id), class:'btn btn-warning' %>
           <%= link_to 'Encerrar', account, method: :delete, data: { confirm: 'Deseja encerrar sua conta?' }, class:'btn btn-danger' %>
         </div>
       </td>
@@ -26,3 +30,6 @@
   <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
+</div>

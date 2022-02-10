@@ -5,7 +5,7 @@ class AccountsControllerTest < ActionDispatch::IntegrationTest
     @account = accounts(:one)
   end
 
-  test "should get index" do
+  test "should get new" do
     get accounts_url
     assert_response :success
   end

@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
     case @transaction.transaction_type
     when 'Saque'
       @account = Account.where(id: @transaction.account_id).first
-      if (@account.balance - @transaction.amount) < 0.00
+      if @account.balance - @transaction.amount < 0.00
         redirect_to new_transaction_path, notice: 'Saldo insuficiente !'
       else
         @account.update!(balance: @account.balance - @transaction.amount)
@@ -41,7 +41,33 @@ class TransactionsController < ApplicationController
       @account.update!(balance: @account.balance + @transaction.amount)
       @transaction.save
       redirect_to site_index_path, notice: 'Déposito realizado !'
+    when 'Transferência'
+      @account = Account.where(id: @transaction.account_id).first
+      @account2 = Account.where(account_number: @transaction.account_number).first
+      if @account.balance - @transaction.amount > 0.00 && @account2.present?
+        set_transference_service
+        respond_to do |format|
+          if @transference_service.call?
+            @transaction.save
+            format.html { redirect_to root_path, notice: 'Transference was successfully executed.' }
+          end
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to transference_new_path, notice: 'There was an error with your transference.' }
+        end
+      end
     end
+  end
+
+  def set_transference_service
+    @account = Account.where(id: @transaction.account_id).first
+    @account2 = Account.where(account_number: @transaction.account_number).first
+    @transference_service = TransferenceService.new(
+      value: transaction_params[:amount],
+      sender: @account,
+      recipient: @account2
+    )
   end
 
   # PATCH/PUT /transactions/1 or /transactions/1.json
@@ -60,7 +86,6 @@ class TransactionsController < ApplicationController
   # DELETE /transactions/1 or /transactions/1.json
   def destroy
     @transaction.destroy
-
     respond_to do |format|
       format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }

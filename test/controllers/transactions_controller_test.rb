@@ -5,7 +5,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     @transaction = transactions(:one)
   end
 
-  test "should get index" do
+  test "should get new" do
     get transactions_url
     assert_response :success
   end

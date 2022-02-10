@@ -5,7 +5,7 @@ class TransactionsTest < ApplicationSystemTestCase
     @transaction = transactions(:one)
   end
 
-  test "visiting the index" do
+  test "visiting the new" do
     visit transactions_url
     assert_selector "h1", text: "Transactions"
   end
