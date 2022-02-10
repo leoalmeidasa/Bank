@@ -1,0 +1,53 @@
+<% if user_signed_in? %>
+
+<h1>New Transaction</h1>
+
+<% if @transaction.errors.any? %>
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+    <ul>
+      <% @transaction.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @transaction, account: @account) do |form| %>
+  <div class="field">
+    <%= form.label 'Valor' %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'COnta para Transferência' %>
+    <%= form.text_field :account_number%>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Operação' %>
+    <%= form.select :transaction_type, %w[Transferência ]%>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :account_id, :value => params[:id] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', transactions_path %>
+<% if notice %>
+  <%= javascript_tag do %>
+    $.bootstrapGrowl('<%= notice %>', {
+    type: 'success',
+    align: 'rigth',
+    alow_dismiss: 'true',
+    stackup_space: 10
+    });
+  <% end %>
+<% end %>
+<% end %>
