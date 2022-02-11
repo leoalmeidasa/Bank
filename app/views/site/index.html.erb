@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="card-body">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h3 class="m-0 font-weight-bold ">Operações</h3>
+      </div>
+
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Número da Conta</th>
+          <th>Balanço</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td><%= @accounts.account_number %></td>
+          <td><%= @accounts.balance %></td>
+          <td>
+            <div class="row">
+              <%= link_to 'Saque ou Déposito', new_transaction_path(:id => @accounts.id), class: 'btn btn-info' %>
+              <%= link_to 'Transferência', transference_new_path(:id => @accounts.id), class: 'btn btn-danger' %>
+           </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

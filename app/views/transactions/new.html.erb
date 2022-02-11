@@ -1,0 +1,59 @@
+<% if user_signed_in? %>
+  <div class="container-fluid">
+    <div class="card-body">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h3 class="m-0 font-weight-bold ">Nova transação</h3>
+        </div>
+
+        <div class="col-lg-6">
+          <%= form_with(model: @transaction, account: @account) do |form| %>
+            <% if @transaction.errors.any? %>
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                <ul>
+                  <% @transaction .full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= form.label 'Valor' %>
+              <%= form.text_field :amount, required: true %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label 'Operação' %>
+              <%= form.select :transaction_type, %w[Déposito Saque ] %>
+            </div>
+
+            <div class="form-group">
+              <%= form.hidden_field :account_id, :value => params[:id] %>
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar</button>
+
+            <%= link_to 'Voltar', site_index_path, class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+
+          <% if notice %>
+            <%= javascript_tag do %>
+              $.bootstrapGrowl('<%= notice %>', {
+              type: 'success',
+              align: 'rigth',
+              alow_dismiss: 'true',
+              stackup_space: 10
+              });
+            <% end %>
+          <% end %>
+          </div>
+
+    </div>
+
+  </div>
+
+<% end %>
+

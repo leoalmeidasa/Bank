@@ -1,0 +1,30 @@
+<% if user_signed_in? %>
+  <div class="container-fluid">
+    <div class="card-body">
+      <div class="card shadow mb-4">
+
+        <div class="col-lg-6">
+          <%= form_with(model: account) do |form| %>
+            <% if account.errors.any? %>
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                <ul>
+                  <% account.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= form.label 'Número da Conta' %>
+              <%= form.text_field :account_number %>
+            </div>
+
+            <button type="submit" class="btn btn-success">Salvar</button>
+            </div>
+          <% end %>
+          </div>
+    </div>
+  </div>
+<% end %>
