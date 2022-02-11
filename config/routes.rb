@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get 'transference/new'
+  get 'transference/index'
   resources :transactions
   get 'site/index'
   resources :accounts

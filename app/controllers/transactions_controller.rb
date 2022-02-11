@@ -7,8 +7,13 @@ class TransactionsController < ApplicationController
 
   # GET /transactions or /transactions.json
   def index
+    params[:q] ||= {}
+    if params[:q][:created_at_lteq].present?
+      params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+    end
+    @q = Transaction.ransack(params[:q])
     @transactions = []
-    @transactions = Transaction.where(account_id: current_user.id).includes([:account])
+    @transactions = @q.result.where(account_id: current_user.id).includes(:account)
   end
 
   # GET /transactions/new
