@@ -6,19 +6,18 @@
           <h3 class="m-0 font-weight-bold ">Nova transação</h3>
         </div>
 
-        <% if @transaction.errors.any? %>
-          <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            <ul>
-              <% @transaction.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <div class="col-lg-6">
           <%= form_with(model: @transaction, account: @account) do |form| %>
+            <% if @transaction.errors.any? %>
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                <ul>
+                  <% @transaction .full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
             <div class="form-group">
               <%= form.label 'Valor' %>
@@ -34,14 +33,11 @@
               <%= form.hidden_field :account_id, :value => params[:id] %>
             </div>
 
-            <
             <button type="submit" class="btn btn-success">Salvar</button>
-            >
+
             <%= link_to 'Voltar', site_index_path, class: 'btn btn-danger' %>
             </div>
           <% end %>
-
-
 
           <% if notice %>
             <%= javascript_tag do %>
@@ -54,9 +50,9 @@
             <% end %>
           <% end %>
           </div>
-      <!-- /.panel -->
+
     </div>
-    <!-- /.col-lg-12 -->
+
   </div>
 
 <% end %>

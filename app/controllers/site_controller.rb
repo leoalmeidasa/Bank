@@ -3,7 +3,7 @@ class SiteController < ApplicationController
   layout 'index'
 
   def index
-    @accounts = Account.all
+      @accounts = Account.find_by_user_id(current_user.id)
   end
   def show
     @accounts = Account.find(params[:id])

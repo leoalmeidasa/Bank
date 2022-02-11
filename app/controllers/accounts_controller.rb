@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = Account.find_by_user_id(current_user.id)
   end
 
   # GET /accounts/1 or /accounts/1.json
@@ -51,7 +51,7 @@ class AccountsController < ApplicationController
 
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
-    current_user.accounts.update(enabled: false)
+    current_user.account.update(enabled: false)
     sign_out current_user
     redirect_to root_path
   end
