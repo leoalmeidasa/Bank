@@ -53,14 +53,15 @@
                         <%= f.label :remember_me %>
                       </div>
                     <% end %>
-
                     <div class="actions">
                       <%= f.submit "Log in" , class:"btn btn-primary btn-user btn-block"%>
                     </div>
                   </form>
                 <% end %>
+                <div class="auth-links">
+                  <%= render "devise/shared/links" %>
+                </div>
               </div>
-              <%= render "devise/shared/links"%>
             </div>
           </div>
         </div>
