@@ -8,7 +8,7 @@ class TransactionsController < ApplicationController
   # GET /transactions or /transactions.json
   def index
     @transactions = []
-    @transactions = Transaction.where(account_id: current_user.id)
+    @transactions = Transaction.where(account_id: current_user.id).includes([:account])
   end
 
   # GET /transactions/new

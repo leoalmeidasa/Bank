@@ -10,6 +10,7 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
+gem 'ransack', '~> 2.5'
 gem 'sass-rails', '>= 6'
 gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
@@ -20,6 +21,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet', '~> 7.0', '>= 7.0.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
