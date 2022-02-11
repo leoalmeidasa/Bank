@@ -2,34 +2,31 @@
   <div class="card-body">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h3 class="m-0 font-weight-bold ">Conta</h3>
+        <h3 class="m-0 font-weight-bold ">Operações</h3>
       </div>
 
-<table class="table table-bordered table-hover">
-  <thead>
-  <tr>
-    <th>Número da Conta</th>
-    <th>Balanço</th>
-    <th>Ações</th>
-  </tr>
-  </thead>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Número da Conta</th>
+          <th>Balanço</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
 
-  <tbody>
-  <% @accounts.each do |account| %>
-    <tr>
-      <td><%= account.account_number %></td>
-      <td><%= account.balance %></td>
-      <td>
-        <div class="row">
-          <%= link_to 'Saque ou Déposito', new_transaction_path(:id => account.id), class:'btn btn-info' %>
-          <%= link_to 'Transferência', transference_new_path(:id => account.id), class:'btn btn-warning' %>
-          <%= link_to 'Encerrar', account, method: :delete, data: { confirm: 'Deseja encerrar sua conta?' }, class:'btn btn-danger' %>
-        </div>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        <tbody>
+        <tr>
+          <td><%= @accounts.account_number %></td>
+          <td><%= @accounts.balance %></td>
+          <td>
+            <div class="row">
+              <%= link_to 'Saque ou Déposito', new_transaction_path(:id => @accounts.id), class: 'btn btn-info' %>
+              <%= link_to 'Transferência', transference_new_path(:id => @accounts.id), class: 'btn btn-danger' %>
+           </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
