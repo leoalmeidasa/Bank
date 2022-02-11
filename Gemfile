@@ -12,7 +12,6 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'ransack', '~> 2.5'
 gem 'sass-rails', '>= 6'
-gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
 
@@ -25,6 +24,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
+  gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
 end
 
@@ -32,6 +32,10 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
