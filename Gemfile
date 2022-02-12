@@ -20,9 +20,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'bullet', '~> 7.0', '>= 7.0.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rspec-rails', '~> 5.0.0'
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
@@ -31,6 +31,7 @@ end
 group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
 end
 
