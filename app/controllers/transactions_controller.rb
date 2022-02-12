@@ -63,7 +63,7 @@ class TransactionsController < ApplicationController
   end
 
   def set_transference_service
-    @account = Account.where(id: @transaction.account_id).first
+    set_account
     @account2 = Account.where(account_number: @transaction.account_number).first
     @transference_service = TransferenceService.new(
       value: transaction_params[:amount],
