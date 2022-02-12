@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TransferenceController < ApplicationController
-  before_action :set_transaction, only: %i[show edit update destroy]
+  before_action :set_transaction, only: %i[ update ]
   before_action :authenticate_user!
   layout 'index'
 
