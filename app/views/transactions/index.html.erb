@@ -1,35 +1,37 @@
 <p id="notice"><%= notice %></p>
+<div class="row justify-content-center">
+  <div class="card shadow mb-4">
+    <h1>Extrato</h1>
 
-<h1>Extrato</h1>
+    <%= search_form_for @q, url: transference_index_path, class: 'form-inline' do |f| %>
+      <%= f.label 'Criado em' %>
+      <%= f.search_field :created_at_end_of_day_lteq, class: 'form-control input-sm', 'datepicker' => true %>
+      <%= f.submit %>
+    <% end %>
 
-<%= search_form_for @q, url: transference_index_path, class: 'form-inline' do |f| %>
-  <%= f.label 'Criado em' %>
-  <%= f.search_field :created_at_end_of_day_lteq, class: 'form-control input-sm',  'datepicker' => true %>
-  <%= f.submit %>
-<% end %>
+    <table class="table table-responsive table-dark table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Valor</th>
+        <th><%= sort_link(@q, :transaction_type, "Tipo de transação") %></th>
+        <th>Conta</th>
+        <th><%= sort_link(@q, :date_transaction, "Data") %></th>
+        <th>Conta Destino</th>
+      </tr>
+      </thead>
 
-<table class="table table-responsive-sm table-dark table-hover table-bordered">
-  <thead>
-  <tr>
-    <th>Valor</th>
-    <th><%= sort_link(@q, :transaction_type, "Tipo de transação") %></th>
-    <th>Conta</th>
-    <th><%= sort_link(@q, :date_transaction, "Data") %></th>
-    <th>Conta Transferência</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <%  @transactions.each do |transaction| %>
-    <tr>
-      <td><%= transaction.amount %></td>
-      <td><%= transaction.transaction_type %></td>
-      <td><%= transaction.account.account_number %></td>
-      <td><%= transaction.date_transaction.strftime("%d/%m/%Y %H:%M") %></td>
-      <td><%= transaction.account_number %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
+      <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><%= transaction.amount %></td>
+          <td><%= transaction.transaction_type %></td>
+          <td><%= transaction.account.account_number %></td>
+          <td><%= transaction.date_transaction.strftime("%d/%m/%Y %H:%M") %></td>
+          <td><%= transaction.account_number %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 

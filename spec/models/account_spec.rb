@@ -9,8 +9,6 @@ RSpec.describe Account, type: :model do
     it { should belong_to(:user) }
   end
 
-
-
   describe 'presence' do
     it { should validate_presence_of(:balance) }
     it { should validate_presence_of(:account_number) }

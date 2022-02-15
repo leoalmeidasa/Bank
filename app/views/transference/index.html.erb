@@ -4,7 +4,7 @@
 
 <%= search_form_for @q, url: transference_index_path, class: 'form-inline' do |f| %>
   <%= f.label 'Criado em' %>
-  <%= f.search_field :created_at_end_of_day_lteq, class: 'form-control input-sm',  'datepicker' => true %>
+  <%= f.search_field :created_at_end_of_day_lteq, class: 'form-control input-sm', 'datepicker' => true %>
   <%= f.submit %>
 <% end %>
 
@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-  <%  @transactions.each do |transaction| %>
+  <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.amount %></td>
       <td><%= transaction.transaction_type %></td>

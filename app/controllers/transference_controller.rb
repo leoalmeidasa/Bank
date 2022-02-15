@@ -5,7 +5,6 @@ class TransferenceController < ApplicationController
   before_action :authenticate_user!
   layout 'index'
 
-
   def index
 
     params[:q] ||= {}
